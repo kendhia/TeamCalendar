@@ -1,14 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.TaskDetails">
+    tools:context=".Fragment.TaskDetails"
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_margin="10dp">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/created_by_imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:src="@drawable/profile" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/created_by_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Adam Smith"
+                android:layout_marginBottom="10dp"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/task_date_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Date: 15/10/2018" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TextView
+        android:layout_margin="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/task_details"/>
+    <TextView
+        android:id="@+id/task_details_TextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="10dp"
+        tools:text="lkqjdshfksqhdflkhqsdlkfjhsqkldfhkljsdhflkjshdfkljhdsffkljhqdsfklhsddfkljhqsdfklhsqdklfhskdjfksdjnfklezjhrlksjdhfklqshdfaiuhflksqdjfklqshdfnkjsqdkljsdffqsdf"/>
+
+
+
+</LinearLayout>
