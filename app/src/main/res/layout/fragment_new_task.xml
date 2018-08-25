@@ -5,7 +5,8 @@
     android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.NewTaskFragment">
+    tools:context=".Fragment.NewTaskFragment"
+    android:layout_marginTop="15dp">
 
 
     <CalendarView
@@ -39,7 +40,8 @@
         android:id="@+id/submit_task_FloatBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginRight="15dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/calendarView" />
 </android.support.constraint.ConstraintLayout>
