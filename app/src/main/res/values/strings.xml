@@ -8,4 +8,5 @@
     <string name="signin">Sign In</string>
 
     <string name="failed_login">There was a problem in network. Please try again!</string>
+    <string name="task_added">Task added successfully.</string>
 </resources>

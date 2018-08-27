@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="300dp"
+    android:layout_height="150dp"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_marginRight="20dp"
+    app:cardCornerRadius="15dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,7 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:layout_gravity="center_vertical"
-                tools:src="@drawable/profile"
+                android:src="@drawable/profile"
                 android:text="@string/hello_blank_fragment" />
 
             <LinearLayout
@@ -35,6 +37,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     tools:text="Adam Smith"
+                    android:textColor="@color/white"
                     android:textStyle="bold"/>
                 <TextView
                     android:id="@+id/task_details_TextView"
@@ -42,12 +45,21 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
                     android:maxLines="2"
+                    android:textColor="@color/white"
                     tools:text="lkqjdshfksqhdflkhqsdlkfjhsqkldfhkljsdhflkjshdfkljhdsffkljhqdsfklhsddfkljhqsdfklhsqdklfhskdjfksdjnfklezjhrlksjdhfklqshdfaiuhflksqdjfklqshdfnkjsqdkljsdffqsdf"/>
 
-
+                <Button
+                    android:id="@+id/mark_done_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Done"
+                    android:textStyle="bold"
+                    android:textColor="@color/white"
+                    android:background="@color/overlay_overlay_black"/>
 
             </LinearLayout>
         </LinearLayout>
+
 
 
     </LinearLayout>

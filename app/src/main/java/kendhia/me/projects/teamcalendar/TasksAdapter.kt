@@ -34,13 +34,16 @@ class TasksAdapter : RecyclerView.Adapter<TasksViewHolder>() {
 class TasksViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView) {
 
     fun bind(taskEntry : TaskEntry) {
+        itemView.setBackgroundColor(itemView.resources.getColor(R.color.colorPrimary))
         itemView.findViewById<TextView>(R.id.created_by_textView).text = taskEntry.createdBy
         itemView.findViewById<TextView>(R.id.task_details_TextView).text = taskEntry.taskDetails
-        Picasso.get()
-                .load(taskEntry.createdByPhoto)
-                .placeholder(itemView.context.resources.getDrawable(R.drawable.profile))
-                .error(itemView.context.resources.getDrawable(R.drawable.profile))
-                .into(itemView.findViewById<ImageView>(R.id.created_by_imageView))
+        if (taskEntry.createdByPhoto.isNotEmpty()) {
+            Picasso.get()
+                    .load(taskEntry.createdByPhoto)
+                    .placeholder(itemView.context.resources.getDrawable(R.drawable.profile))
+                    .error(itemView.context.resources.getDrawable(R.drawable.profile))
+                    .into(itemView.findViewById<ImageView>(R.id.created_by_imageView))
+        }
 
         itemView.findViewById<TextView>(R.id.task_details_TextView).setOnClickListener {
             val intent = Intent(itemView.context, TaskActivity::class.java)
