@@ -4,6 +4,7 @@ import android.app.Application
 import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
+import android.util.Log
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
@@ -18,7 +19,7 @@ class FirebaseViewModel(val app : Application) : AndroidViewModel(app) {
 
         val data = MutableLiveData<List<TaskEntry>>()
 
-        ref.orderByChild("date").equalTo(date).addListenerForSingleValueEvent( object : ValueEventListener {
+        ref.addListenerForSingleValueEvent( object : ValueEventListener {
             override fun onCancelled(p0: DatabaseError) {
             }
 

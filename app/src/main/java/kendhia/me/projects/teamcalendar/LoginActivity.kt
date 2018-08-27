@@ -30,6 +30,7 @@ class LoginActivity : AppCompatActivity(){
         supportActionBar!!.hide()
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
+                .requestProfile()
                 .build()
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 

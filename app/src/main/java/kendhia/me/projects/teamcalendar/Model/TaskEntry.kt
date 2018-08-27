@@ -1,6 +1,6 @@
 package kendhia.me.projects.teamcalendar.Model
 
 
-class TaskEntry(val id : String,val createdBy : String,val date : String, val taskDetails : String, val createdByPhoto : String) {
-    constructor() : this("", "", "", "", "")
+class TaskEntry(var id : String,var createdBy : String,var date : String, var taskDetails : String, var createdByPhoto : String, var done : Boolean) {
+    constructor() : this("", "", "", "", "", false)
 }

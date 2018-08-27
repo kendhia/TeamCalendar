@@ -43,7 +43,8 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         recyclerView.adapter = tasksAdapter
-
+        updateListOfTasks(""
+        )
         calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
             val date = "$dayOfMonth/$month/$year"
             updateListOfTasks(date)
