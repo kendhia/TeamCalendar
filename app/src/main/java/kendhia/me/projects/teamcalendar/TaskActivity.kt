@@ -1,5 +1,6 @@
 package kendhia.me.projects.teamcalendar
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kendhia.me.projects.teamcalendar.Fragment.NewTaskFragment
@@ -14,26 +15,25 @@ class TaskActivity : AppCompatActivity() {
 
         val ft = supportFragmentManager.beginTransaction()
         val fragType = intent.getStringExtra(FRAG_TYPE)
-        when (fragType) {
-            NEW_TASK_FRAG -> {
+        when {
+            fragType == NEW_TASK_FRAG -> {
                 ft.replace(R.id.fullscreen_content, NewTaskFragment())
                 ft.addToBackStack(null)
                 ft.commit()
             }
-            TASK_DETAILS_FRAG -> {
+            fragType == TASK_DETAILS_FRAG -> {
                 ft.replace(R.id.fullscreen_content, TaskDetailsFragment())
                 ft.addToBackStack(null)
                 ft.commit()
             }
-            else -> {
-                ft.replace(R.id.fullscreen_content, NewTaskFragment())
-                ft.addToBackStack(null)
-                ft.commit()
-
-            }
+            else -> startActivity(Intent(this, MainActivity::class.java))
         }
 
 
+    }
+
+    override fun onBackPressed() {
+        startActivity(Intent(this, MainActivity::class.java))
     }
 
     companion object {

@@ -9,4 +9,7 @@
 
     <string name="failed_login">There was a problem in network. Please try again!</string>
     <string name="task_added">Task added successfully.</string>
+    <string name="tasks">Tasks</string>
+    <string name="new_task">New Task</string>
+    <string name="task_details_frag">Task Details</string>
 </resources>
