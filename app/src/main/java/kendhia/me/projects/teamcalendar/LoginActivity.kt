@@ -75,7 +75,9 @@ class LoginActivity : AppCompatActivity(){
             signinButton.visibility = View.VISIBLE
         } else {
             val intent = Intent(this, MainActivity::class.java)
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_SINGLE_TOP)
             startActivity(intent)
+            finish()
         }
 
     }

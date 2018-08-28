@@ -33,6 +33,7 @@ class TaskActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
+        finish()
         startActivity(Intent(this, MainActivity::class.java))
     }
 
