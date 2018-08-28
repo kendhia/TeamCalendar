@@ -1,58 +1,132 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_marginTop="15dp">
+    android:layout_marginTop="15dp"
+    android:background="@color/colorPrimary"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/task_details_frag"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"/>
+
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="10dp">
-
-        <ImageView
-            android:id="@+id/created_by_imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:src="@drawable/profile" />
+        android:layout_margin="10dp"
+        app:cardCornerRadius="15dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:orientation="vertical">
-            <TextView
-                android:id="@+id/created_by_textView"
-                android:layout_width="wrap_content"
+
+
+            <ImageView
+                android:id="@+id/created_by_imageView"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="8dp"
+                android:src="@drawable/profile" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:text="Adam Smith"
-                android:layout_marginBottom="10dp"
-                android:textStyle="bold"/>
+                android:layout_margin="10dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/created_by_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:gravity="center_horizontal"
+                    android:textColor="@color/black"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    tools:text="Adam Smith" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/task_date_textView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+                        android:textStyle="bold"
+                        tools:text="Date: 15/10/2018"
+                        android:layout_gravity="center_vertical"/>
+                    <ImageView
+                        android:id="@+id/done_imageView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        tools:visibility="visible"
+                        android:layout_margin="10dp"
+                        android:src="@drawable/ic_done_black_24px"
+                        android:layout_gravity="bottom"/>
+
+                </LinearLayout>
+
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/task_date_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Date: 15/10/2018" />
+                android:layout_margin="10dp"
+                android:text="@string/task_details"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/task_details_TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="10dp"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="normal"
+                android:layout_margin="10dp"
+                tools:text="lkqjdshfksqhdflkhqsdlkfjhsqkldfhkljsdhflkjshdfkljhdsffkljhqdsfklhsddfkljhqsdfklhsqdklfhskdjfksdjnfklezjhrlksjdhfklqshdfaiuhflksqdjfklqshdfnkjsqdkljsdffqsdf" />
+
+            <LinearLayout
+                android:layout_gravity="end"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/mark_done_btn"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:text="Done"
+                    android:visibility="gone"
+                    android:textStyle="bold"
+                    android:layout_margin="10dp"
+                    tools:visibility="visible"
+                    android:drawableEnd="@drawable/ic_done_black_24px"/>
+
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
 
-    <TextView
-        android:layout_margin="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/task_details"/>
-    <TextView
-        android:id="@+id/task_details_TextView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="10dp"
-        tools:text="lkqjdshfksqhdflkhqsdlkfjhsqkldfhkljsdhflkjshdfkljhdsffkljhqdsfklhsddfkljhqsdfklhsqdklfhskdjfksdjnfklezjhrlksjdhfklqshdfaiuhflksqdjfklqshdfnkjsqdkljsdffqsdf"/>
 
+    </android.support.v7.widget.CardView>
 
 
 </LinearLayout>

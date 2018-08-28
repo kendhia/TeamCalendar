@@ -1,5 +1,6 @@
 package kendhia.me.projects.teamcalendar
 
+import android.app.ProgressDialog
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
@@ -43,12 +44,12 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         recyclerView.adapter = tasksAdapter
-        updateListOfTasks(""
-        )
+        val simpleDateFormat = SimpleDateFormat("dd/M/yyyy")
+        var date = simpleDateFormat.format(Date(calendarView.date))
+        updateListOfTasks(date)
         calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
-            val date = "$dayOfMonth/$month/$year"
+            val date = "$dayOfMonth/${month+1}/$year"
             updateListOfTasks(date)
-            Toast.makeText(application , date, Toast.LENGTH_LONG).show()
         }
 
         newTaskBtn.setOnClickListener {
@@ -60,10 +61,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateListOfTasks(date : String) {
+        val progressDialog = ProgressDialog.show(this, "", "Loading...", true)
+        tasksAdapter.cleanItems()
         firebaseViewModel.getTasksByDate(date).observe(this, android.arch.lifecycle.Observer {
             if (it != null )  {
                 tasksAdapter.addItems(it)
                 tasksAdapter.notifyDataSetChanged()
+                progressDialog.dismiss()
             }
         })
     }

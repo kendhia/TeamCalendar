@@ -27,11 +27,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import kendhia.me.projects.teamcalendar.LoginActivity
 
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
 /**
  * A simple [Fragment] subclass.
  *
@@ -63,10 +58,10 @@ class NewTaskFragment : Fragment() {
                 taskEntry.createdByPhoto = account.photoUrl.toString()
             }
             taskEntry.createdBy = account.displayName!!
-            val sfd = SimpleDateFormat("dd/MM/yyyy")
+            val sfd = SimpleDateFormat("dd/M/yyyy")
             taskEntry.date = sfd.format(Date(calendarView.date))
 
-            calendarView.setOnDateChangeListener { _, year, month, dayOfMonth -> taskEntry.date = "$dayOfMonth/$month*$year" }
+            calendarView.setOnDateChangeListener { _, year, month, dayOfMonth -> taskEntry.date = "$dayOfMonth/${month+1}/$year" }
 
             submitFloatBtn.setOnClickListener {
                 taskEntry.taskDetails = taskDetailsInput.text.toString()
@@ -90,5 +85,7 @@ class NewTaskFragment : Fragment() {
         Toast.makeText(activity, resources.getString(R.string.task_added), Toast.LENGTH_LONG).show()
         startActivity(Intent(activity, MainActivity::class.java))
     }
+
+
 
 }
