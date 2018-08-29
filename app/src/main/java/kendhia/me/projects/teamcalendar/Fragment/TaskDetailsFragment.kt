@@ -37,12 +37,14 @@ class TaskDetailsFragment : Fragment() {
     val taskKey by lazy {
         activity!!.intent.getStringExtra(TASK_KEY)
     }
+    lateinit var backButton: ImageView
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
         val viewItem =  inflater.inflate(R.layout.fragment_task_details, container, false)
         val progressDialog = ProgressDialog.show(activity, "", "Loading...", true)
+        backButton = viewItem.findViewById(R.id.goBackImageView)
 
         firebaseViewModel.getTaskByKey(taskKey).observe(this, Observer<TaskEntry> { t ->
             if (t != null) {
@@ -74,6 +76,7 @@ class TaskDetailsFragment : Fragment() {
             }
         })
 
+        backButton.setOnClickListener { activity!!.onBackPressed() }
 
         return viewItem
     }
