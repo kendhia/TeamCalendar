@@ -5,4 +5,4 @@
 4. Check other tasks made by your coworkers on different dates.
 5. Mark tasks as done. 
 
-## [Download](https://goo.gl/qmymYQ) the app apk file in order to try it.
+## [Download](https://goo.gl/7jF25c) the app apk file in order to try it.
