@@ -2,7 +2,9 @@ package kendhia.me.projects.teamcalendar
 
 import android.app.ProgressDialog
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
@@ -13,6 +15,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.CalendarView
 import android.widget.Toast
+import java.net.InetAddress
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -39,9 +42,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     val snackbar by lazy {
-        Snackbar.make(findViewById(R.id.mainActivityLayout), getString(R.string.no_tasks), Snackbar.LENGTH_INDEFINITE)
+        Snackbar.make(findViewById(R.id.mainActivityLayout), getString(R.string.no_tasks), Snackbar.LENGTH_LONG)
                 .setAction(R.string.add_task) { startNewTaskFrag() }
     }
+
+
     lateinit var date : String
 
     val simpleDateFormat by lazy {
@@ -52,6 +57,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         supportActionBar!!.hide()
+        updateUI()
+    }
+
+
+    private fun updateUI() {
 
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         recyclerView.adapter = tasksAdapter
@@ -65,7 +75,6 @@ class MainActivity : AppCompatActivity() {
         newTaskBtn.setOnClickListener {
             startNewTaskFrag()
         }
-
     }
 
 
@@ -83,7 +92,7 @@ class MainActivity : AppCompatActivity() {
                 tasksAdapter.addItems(it)
                 tasksAdapter.notifyDataSetChanged()
                 progressDialog.dismiss()
-                if (it.isEmpty()) {
+                if (it.isEmpty() && tasksAdapter.itemCount == 0) {
                     snackbar.show()
                 } else if (snackbar.isShown) {
                     snackbar.dismiss()
