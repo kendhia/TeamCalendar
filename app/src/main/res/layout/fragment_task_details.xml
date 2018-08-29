@@ -8,15 +8,33 @@
     android:background="@color/colorPrimary"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:text="@string/task_details_frag"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="15dp">
+
+
+        <TextView
+            android:id="@+id/newTaskTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/task_details_frag"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/goBackImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="15dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:src="@drawable/ic_arrow_back_24px" />
+
+    </RelativeLayout>
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
@@ -55,6 +73,7 @@
                     android:textSize="30sp"
                     android:textStyle="bold"
                     tools:text="Adam Smith" />
+
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -64,21 +83,22 @@
                         android:id="@+id/task_date_textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
                         android:gravity="center_horizontal"
                         android:textColor="@color/black"
                         android:textSize="15sp"
                         android:textStyle="bold"
-                        tools:text="Date: 15/10/2018"
-                        android:layout_gravity="center_vertical"/>
+                        tools:text="Date: 15/10/2018" />
+
                     <ImageView
                         android:id="@+id/done_imageView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        tools:visibility="visible"
+                        android:layout_gravity="bottom"
                         android:layout_margin="10dp"
                         android:src="@drawable/ic_done_black_24px"
-                        android:layout_gravity="bottom"/>
+                        android:visibility="gone"
+                        tools:visibility="visible" />
 
                 </LinearLayout>
 
@@ -97,30 +117,30 @@
                 android:id="@+id/task_details_TextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="10dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="10dp"
                 android:textColor="@color/black"
                 android:textSize="12sp"
                 android:textStyle="normal"
-                android:layout_margin="10dp"
                 tools:text="lkqjdshfksqhdflkhqsdlkfjhsqkldfhkljsdhflkjshdfkljhdsffkljhqdsfklhsddfkljhqsdfklhsqdklfhskdjfksdjnfklezjhrlksjdhfklqshdfaiuhflksqdjfklqshdfnkjsqdkljsdffqsdf" />
 
             <LinearLayout
-                android:layout_gravity="end"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="end"
                 android:orientation="horizontal">
 
                 <Button
                     android:id="@+id/mark_done_btn"
                     android:layout_width="120dp"
                     android:layout_height="wrap_content"
-                    android:text="Done"
-                    android:visibility="gone"
-                    android:textStyle="bold"
                     android:layout_margin="10dp"
-                    tools:visibility="visible"
-                    android:drawableEnd="@drawable/ic_done_black_24px"/>
+                    android:drawableEnd="@drawable/ic_done_black_24px"
+                    android:text="Done"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
 
             </LinearLayout>
         </LinearLayout>

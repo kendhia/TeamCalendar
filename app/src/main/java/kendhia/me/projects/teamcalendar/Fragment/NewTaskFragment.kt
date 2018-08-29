@@ -8,9 +8,11 @@ import android.support.design.widget.TextInputEditText
 import android.support.v4.app.Fragment
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CalendarView
+import android.widget.ImageView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -36,6 +38,8 @@ class NewTaskFragment : Fragment() {
     lateinit var calendarView: CalendarView
     lateinit var taskDetailsInput: TextInputEditText
     lateinit var submitFloatBtn: FloatingActionButton
+    lateinit var backButton: ImageView
+    lateinit var submitImageView: ImageView
 
     private val firebaseRef by lazy {
         FirebaseDatabase.getInstance().reference
@@ -52,6 +56,8 @@ class NewTaskFragment : Fragment() {
         calendarView = itemView.findViewById(R.id.calendarView)
         taskDetailsInput = itemView.findViewById(R.id.text_details_textInput)
         submitFloatBtn = itemView.findViewById(R.id.submit_task_FloatBtn)
+        backButton = itemView.findViewById(R.id.goBackImageView)
+        submitImageView = itemView.findViewById(R.id.submit_task_imageView)
 
         val account = GoogleSignIn.getLastSignedInAccount(activity)
         val dateLong = activity!!.intent.getLongExtra(TaskActivity.NEW_TASK_DATE, calendarView.date)
@@ -72,7 +78,15 @@ class NewTaskFragment : Fragment() {
                 taskEntry.taskDetails = taskDetailsInput.text.toString()
                 submitTask(taskEntry)
             }
+
+            submitImageView.setOnClickListener {
+                taskEntry.taskDetails = taskDetailsInput.text.toString()
+                submitTask(taskEntry)
+            }
+
         }
+
+        backButton.setOnClickListener { activity!!.onBackPressed() }
 
         return itemView
     }
