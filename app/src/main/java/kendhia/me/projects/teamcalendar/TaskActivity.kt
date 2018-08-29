@@ -41,5 +41,6 @@ class TaskActivity : AppCompatActivity() {
         val NEW_TASK_FRAG = "newtask"
         val TASK_DETAILS_FRAG = "taskdetails"
         val FRAG_TYPE = "fragtype"
+        val NEW_TASK_DATE = "taskdate"
     }
 }

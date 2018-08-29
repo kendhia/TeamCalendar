@@ -12,4 +12,6 @@
     <string name="tasks">Tasks</string>
     <string name="new_task">New Task</string>
     <string name="task_details_frag">Task Details</string>
+    <string name="no_tasks"> There\'s no task for this day. Add a new one ? </string>
+    <string name="add_task">Add </string>
 </resources>

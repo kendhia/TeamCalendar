@@ -25,6 +25,7 @@ import java.util.*
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import kendhia.me.projects.teamcalendar.LoginActivity
+import kendhia.me.projects.teamcalendar.TaskActivity
 
 
 /**
@@ -40,6 +41,10 @@ class NewTaskFragment : Fragment() {
         FirebaseDatabase.getInstance().reference
     }
 
+    private val taskEntry by lazy {
+        TaskEntry()
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -47,9 +52,10 @@ class NewTaskFragment : Fragment() {
         calendarView = itemView.findViewById(R.id.calendarView)
         taskDetailsInput = itemView.findViewById(R.id.text_details_textInput)
         submitFloatBtn = itemView.findViewById(R.id.submit_task_FloatBtn)
-        val taskEntry = TaskEntry()
 
         val account = GoogleSignIn.getLastSignedInAccount(activity)
+        val dateLong = activity!!.intent.getLongExtra(TaskActivity.NEW_TASK_DATE, calendarView.date)
+        calendarView.date = dateLong
 
         if (account == null) {
             startActivity(Intent(activity, LoginActivity::class.java))
@@ -58,8 +64,7 @@ class NewTaskFragment : Fragment() {
                 taskEntry.createdByPhoto = account.photoUrl.toString()
             }
             taskEntry.createdBy = account.displayName!!
-            val sfd = SimpleDateFormat("dd/M/yyyy")
-            taskEntry.date = sfd.format(Date(calendarView.date))
+            taskEntry.date = getCurrCalendarDate()
 
             calendarView.setOnDateChangeListener { _, year, month, dayOfMonth -> taskEntry.date = "$dayOfMonth/${month+1}/$year" }
 
@@ -73,7 +78,13 @@ class NewTaskFragment : Fragment() {
     }
 
 
-    fun submitTask(task: TaskEntry) {
+    private fun getCurrCalendarDate(): String  {
+        val sfd = SimpleDateFormat("dd/M/yyyy")
+        return  sfd.format(Date(calendarView.date))
+
+    }
+
+    private fun submitTask(task: TaskEntry) {
         val id = firebaseRef.push().key
         if (id == null) {
             task.id = task.date
